@@ -1,8 +1,8 @@
 import { Address, BigInt } from "@graphprotocol/graph-ts";
 import { Token } from "../../generated/schema";
-import { ERC20 as ERC20ABI } from "../../generated/LBPair/ERC20";
-import { ERC20NameBytes as ERC20NameBytesABI } from "../../generated/LBPair/ERC20NameBytes";
-import { ERC20SymbolBytes as ERC20SymbolBytesABI } from "../../generated/LBPair/ERC20SymbolBytes";
+import { ERC20 as ERC20ABI } from "../../generated/LBPairV21/ERC20";
+import { ERC20NameBytes as ERC20NameBytesABI } from "../../generated/LBPairV21/ERC20NameBytes";
+import { ERC20SymbolBytes as ERC20SymbolBytesABI } from "../../generated/LBPairV21/ERC20SymbolBytes";
 import { NULL_CALL_RESULT_VALUE } from "../constants";
 
 export function loadToken(address: Address): Token {

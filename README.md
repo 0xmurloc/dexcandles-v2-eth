@@ -13,13 +13,13 @@ $ yarn global add @graphprotocol/graph-cli
 
 # build 
 $ yarn 
-$ yarn prepare:avax
-$ yarn codegen:avax
-$ yarn build:avax
+$ yarn prepare
+$ yarn codegen
+$ yarn build
 
 # authenticate
 $ graph auth --product hosted-service
 
-# deploy to avax. change to your own graph endpoint
-$ yarn deploy:avax
+# deploy
+$ yarn deploy
 ```

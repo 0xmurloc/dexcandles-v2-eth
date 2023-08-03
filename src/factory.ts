@@ -1,40 +1,21 @@
+import { log } from "@graphprotocol/graph-ts";
 import { LBPairCreated as LBPairCreatedV21 } from "../generated/LBFactoryV21/LBFactoryV21";
-import { LBPairCreated } from "../generated/LBFactory/LBFactory";
-import { PairCreated } from "../generated/Factory/Factory";
-import { LBPair, LBPairV21, Pair as PairV1 } from "../generated/schema";
+import { LBPairV21 } from "../generated/schema";
 import { loadToken } from "./entities";
 
 export function handleLBPairCreatedV21(event: LBPairCreatedV21): void {
+
+  log.info("[LBPairCreated] tokenX: {}, tokenY: {}, binStep: {}", [event.params.tokenX.toString(), event.params.tokenY.toString(), event.params.binStep.toString()]);
+
   const lbPair = new LBPairV21(event.params.LBPair.toHexString());
-  const tokenX = loadToken(event.params.tokenX);
-  const tokenY = loadToken(event.params.tokenY);
 
-  lbPair.tokenX = tokenX.id;
-  lbPair.tokenY = tokenY.id;
+  // load token and store them
+  loadToken(event.params.tokenX);
+  loadToken(event.params.tokenY);
+
+  lbPair.tokenX = event.params.tokenX.toString();
+  lbPair.tokenY = event.params.tokenY.toString();
   lbPair.binStep = event.params.binStep;
 
   lbPair.save();
-}
-
-export function handleLBPairCreated(event: LBPairCreated): void {
-  const lbPair = new LBPair(event.params.LBPair.toHexString());
-  const tokenX = loadToken(event.params.tokenX);
-  const tokenY = loadToken(event.params.tokenY);
-
-  lbPair.tokenX = tokenX.id;
-  lbPair.tokenY = tokenY.id;
-  lbPair.binStep = event.params.binStep;
-
-  lbPair.save();
-}
-
-export function handleV1PairCreated(event: PairCreated): void {
-  const v1Pair = new PairV1(event.params.pair.toHexString());
-  const token0 = loadToken(event.params.token0);
-  const token1 = loadToken(event.params.token1);
-
-  v1Pair.token0 = token0.id;
-  v1Pair.token1 = token1.id;
-
-  v1Pair.save();
 }
