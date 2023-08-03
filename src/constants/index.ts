@@ -14,5 +14,3 @@ export const BIG_DECIMAL_ONE = BigDecimal.fromString("1");
 export const BIG_DECIMAL_ZERO = BigDecimal.fromString("0");
 export const NULL_CALL_RESULT_VALUE =
   "0x0000000000000000000000000000000000000000000000000000000000000001";
-
-export const V1_FACTORY_ADDRESS = Address.fromString('');
